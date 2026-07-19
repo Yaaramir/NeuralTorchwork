@@ -32,7 +32,6 @@ class Model(nn.Module):
         self.loss = self.cce(x, y)
         #self.acc = TODO        
 
-print("\n")    
 # Create model
 model = Model()
 model.init_optimizer()
@@ -68,5 +67,3 @@ y_test = torch.tensor(y_test_raw)
 
 model.forward(X_test, y_test)
 print(f"{model.loss:.3f} VALIDATION LOSS")
-
-print("\n")   
