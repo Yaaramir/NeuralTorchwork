@@ -31,7 +31,8 @@ class Model(nn.Module):
         self.predictions = self.softmax(x)
         self.loss = self.cce(x, y)
         #self.acc = TODO        
-    
+
+print("\n")    
 # Create model
 model = Model()
 model.init_optimizer()
@@ -52,10 +53,9 @@ for epoch in range(10001):
     model.optimizer.step()
 
     # Print progression
+    # TODO: accuracy
     if not epoch % 1000:
         print(f"epoch: {epoch}, " +
-              # TODO
-              f"accuracy: NA, " +
               f"data_loss: {model.loss:.3f}, ")
 
 print(f"\n{model.loss:.3f} TRAINING LOSS")
@@ -69,4 +69,4 @@ y_test = torch.tensor(y_test_raw)
 model.forward(X_test, y_test)
 print(f"{model.loss:.3f} VALIDATION LOSS")
 
-#TODO SUUUPERVISED!
+print("\n")   
