@@ -1,1 +1,1 @@
-# NeuralTorchwork
+Welcome to NeuralTorchwork. Goal of this project is to recreate the Neural Network created in NeuralScratchwork (https://github.com/Yaaramir/NeuralScratchwork). While the original network was coded in raw Python with no NN libraries or frameworks (and only making use of NumPy), the NeuralTorchwork exploits the advantages of libraries like PyTorch to input images and create predictions fpr classification exercises.
