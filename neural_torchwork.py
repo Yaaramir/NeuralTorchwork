@@ -30,8 +30,7 @@ class Model(nn.Module):
         x = self.dense2(x)
         self.predictions = self.softmax(x)
         self.loss = self.cce(x, y)
-        #self.acc = TODO
-        
+        #self.acc = TODO        
     
 # Create model
 model = Model()
@@ -42,10 +41,27 @@ X_raw, y_raw = spiral_data(samples=100, classes=3)
 X = torch.tensor(X_raw)
 y = torch.tensor(y_raw)
 
-# Forward pass
-model.forward(X, y)
-# Backward pass
-model.loss.backward()
+# TRAINING
+for epoch in range(10001):
+    # Forward pass
+    model.forward(X, y)
 
-# Print results
-print(f"loss: {model.loss}")
+    # Backward pass and parameter update
+    model.optimizer.zero_grad()
+    model.loss.backward()
+    model.optimizer.step()
+
+    # Print progression
+    if not epoch % 1000:
+        print(f"epoch: {epoch}, " +
+              f"accuracy: , " +
+              f"data_loss: {model.loss:.3f}, ")
+
+
+# VALIDATION
+X_test_raw, y_test_raw = spiral_data(samples=100, classes=3)
+X_test = torch.tensor(X_test_raw)
+y_test = torch.tensor(y_test_raw)
+
+model.forward(X_test, y_test)
+print(f"test loss: {model.loss}")
