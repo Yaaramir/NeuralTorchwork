@@ -54,8 +54,11 @@ for epoch in range(10001):
     # Print progression
     if not epoch % 1000:
         print(f"epoch: {epoch}, " +
-              f"accuracy: , " +
+              # TODO
+              f"accuracy: NA, " +
               f"data_loss: {model.loss:.3f}, ")
+
+print(f"\n{model.loss:.3f} TRAINING LOSS")
 
 
 # VALIDATION
@@ -64,4 +67,6 @@ X_test = torch.tensor(X_test_raw)
 y_test = torch.tensor(y_test_raw)
 
 model.forward(X_test, y_test)
-print(f"test loss: {model.loss}")
+print(f"{model.loss:.3f} VALIDATION LOSS")
+
+#TODO SUUUPERVISED!
