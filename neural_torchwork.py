@@ -25,12 +25,18 @@ class Model(nn.Module):
 
     # Forwards data to get final predictions, loss and accuracy
     def forward(self, X, y):
-        x = self.dense1(X)
-        x = self.relu(x)
-        x = self.dense2(x)
-        self.predictions = self.softmax(x)
-        self.loss = self.cce(x, y)
-        #self.acc = TODO        
+        # pass
+        y_hat = self.dense1(X)
+        y_hat = self.relu(y_hat)
+        y_hat = self.dense2(y_hat)
+        y_hat = self.softmax(y_hat)
+
+        # evaluation: loss and accuracy
+        self.loss = self.cce(y_hat, y)
+        predictions = torch.argmax(y_hat, dim=1)
+        y_true = torch.argmax(y, dim=1) if y.ndim == 2 else y
+        self.acc = (predictions == y_true).float().mean()
+        
 
 # Create model
 model = Model()
@@ -52,18 +58,26 @@ for epoch in range(10001):
     model.optimizer.step()
 
     # Print progression
-    # TODO: accuracy
     if not epoch % 1000:
         print(f"epoch: {epoch}, " +
-              f"data_loss: {model.loss:.3f}, ")
-
-print(f"\n{model.loss:.3f} TRAINING LOSS")
-
+              f"data_loss: {model.loss:.3f}, " +
+              f"accuracy: {model.acc:.3f}")
+        
+loss_train = model.loss
+acc_train = model.acc
 
 # VALIDATION
-X_test_raw, y_test_raw = spiral_data(samples=100, classes=3)
-X_test = torch.tensor(X_test_raw)
-y_test = torch.tensor(y_test_raw)
+X_val_raw, y_val_raw = spiral_data(samples=100, classes=3)
+X_val = torch.tensor(X_val_raw)
+y_val = torch.tensor(y_val_raw)
 
-model.forward(X_test, y_test)
-print(f"{model.loss:.3f} VALIDATION LOSS")
+model.forward(X_val, y_val)
+loss_val = model.loss
+acc_val = model.acc
+
+# Printing results
+print(f"\n{loss_train:.3f} TRAINING LOSS")
+print(f"{loss_val:.3f} VALIDATION LOSS ({(loss_val - loss_train):.3f})\n")
+
+print(f"{acc_train:.3f} TRAINING ACCURACY")
+print(f"{acc_val:.3f} VALIDATION ACCURACY ({(acc_val - acc_train):.3f})")
