@@ -4,12 +4,10 @@ An artificial neural network developed with the PyTorch framework.
 [![Build Status](https://img.shields.io/badge/build-passing-brightgreen)]()
 [![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?logo=pytorch&logoColor=white)]()
 
----
-
 ## Table of Contents
-- [About the project](#-about-the-project)
-- [Status Quo](#-status-quo)
-- [Whats's next?](#-whats-next)
+- [About the project](#about-the-project)
+- [Status Quo](#status-quo)
+- [Whats's next?](#whats-next)
 
 ## About the project
 NeuralTorchwork is one of three simple neural networks created for classification exercises. Each is coded using a different set of frameworks:
@@ -58,3 +56,7 @@ Since this network currently follows the progression of NeuralScratchwork, devel
 - The Evaluation expresses the need for hyperparameter management and experimienting to avoid overfitting and training stagnation.
 - More layers and dropout will be considered and tested.
 - Different model architectures and layer sizes will be experimented with to identify the best-fitting model and detect potential imbalances in the calculations.
+
+___
+
+[_Jump back to the top_](#neuraltorchwork)
