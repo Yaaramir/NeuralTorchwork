@@ -7,9 +7,9 @@ An artificial neural network developed with the PyTorch framework.
 ---
 
 ## Table of Contents
-- [About the project](#goals)
-- [Status Quo](#statusquo)
-- [Whats's next?](#todo)
+- [About the project](#-about-the-project)
+- [Status Quo](#-status-quo)
+- [Whats's next?](#-whats-next)
 
 ## About the project
 NeuralTorchwork is one of three simple neural networks created for classification exercises. Each is coded using a different set of frameworks:
@@ -27,17 +27,29 @@ Since understanding how neural networks work at its core and learning how to use
 Idea and architecture of the NeuralScratchwork are conceived and heavily inspired by [Neural Networks from Scratch](https://nnfs.io/) (Kinsley H., Kukiela D., 2020).
 
 ## Status Quo
-- A simple model with two linear dense layers, ReLU, and Softmax activation functions has been implemented. CCE has been chosen for loss calculation and Adam as the optimizer.
-- A 2D dataset with three classes of dots spiraling around a center point is implemented.
+- ### Model:
+  - 2 hidden layers with ReLU
+  - 1 output layer
+  - CCE with implemented softmax
+
+  ![network diagram](./assets/nn_concept.png)
+
+- ### Data:
+A training dataset of spiraling points in a 2D space with 1,000 samples and 3 classes is created, using the nnfs.io dataset library.
 
 ![Spiral Data](./assets/spiral_data.png)
-- The network trains for 10k epochs by performing forward passes, backward passes, gradient calculation, and parameter updating.
+
+- ### Training:
+The network trains for 10k epochs by performing forward passes, backward passes, gradient calculation, and parameter updating.
 
 ![Training progression results](./assets/training_progression_results.png)
-- A test dataset is used to evaluate model performance after training.
+
+- ### Validation:
+A validation dataset is used to evaluate model performance after training.
 
 ![Training vs Validation Results](./assets/training_vs_validation_results.png)
-- Evaluation:
+
+- ### Evaluation:
   - Accuracy and loss both reach the values targeted at this stage of development. It is expected to see an increase once further updates have been implemented.
   - Training and validation show no indication of overfitting, since their values differ only slighty while a small difference is to be expected while validating.
 
