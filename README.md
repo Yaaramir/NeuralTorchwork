@@ -40,6 +40,6 @@ Idea and architecture of the NeuralScratchwork are conceived and heavily inspire
 
 ## What's next?
 Since this network currently follows the progression of NeuralScratchwork, development will aim for a PyTorch-native implementation of its Status Quo. 
-- Validation is required for both validation of the model's correct data procession and hyperparameter tuning.
+- Validation is required for both validation of the model's correct data procession and hyperparameter tuning - the latter still has to be installed
 - Regularization will be implemented next to avoid overfitting.
 - Different model architectures and layer sizes will be experimented with to identify the best-fitting model and detect potential imbalances in the calculations.
