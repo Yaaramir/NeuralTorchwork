@@ -14,8 +14,10 @@ class Model(nn.Module):
     def __init__(self):
         super(Model, self).__init__()
         self.dense1 = nn.Linear(in_features=2, out_features=512)
-        self.relu = nn.ReLU()
-        self.dense2 = nn.Linear(in_features=512, out_features=3)
+        self.relu1 = nn.ReLU()
+        self.dense2 = nn.Linear(in_features=512, out_features=512)
+        self.relu2 = nn.ReLU()
+        self.dense3 = nn.Linear(in_features=512, out_features=3)
         self.softmax = nn.Softmax(dim=1)
         self.cce = nn.CrossEntropyLoss()
 
@@ -23,10 +25,10 @@ class Model(nn.Module):
     def init_optimizer(self):
         self.optimizer = optim.Adam(
             model.parameters(),
-            lr=0.05,
+            lr=1e-2,
             betas=(0.9, 0.999),
-            eps=1e-7,
-            weight_decay=5e-4
+            eps=1e-8,
+            weight_decay=1e-3
         )
         self.scheduler = optim.lr_scheduler.LambdaLR(
             self.optimizer,
@@ -38,8 +40,10 @@ class Model(nn.Module):
 
         # pass data X forward
         logits = self.dense1(X)
-        logits = self.relu(logits)
+        logits = self.relu1(logits)
         logits = self.dense2(logits)
+        logits = self.relu2(logits)
+        logits = self.dense3(logits)
 
         # Evaluation: loss and accuracy
         self.loss = self.cce(logits, y)
@@ -54,7 +58,7 @@ model.init_optimizer()
 
 # TRAINING
 # Create training dataset
-X_raw, y_raw = spiral_data(samples=100, classes=3)
+X_raw, y_raw = spiral_data(samples=1000, classes=3)
 X = torch.tensor(X_raw)
 y = torch.tensor(y_raw)
 
