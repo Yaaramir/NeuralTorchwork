@@ -37,7 +37,9 @@ Idea and architecture of the NeuralScratchwork are conceived and heavily inspire
 - A test dataset is used to evaluate model performance after training.
 
 ![Test Results](./assets/test_results.png)
-- Evaluation: Validation accuracy and loss differ from training results, indicating potential overfitting. Additionally, stagnation after the first few epochs displays the need for a more aggressive scheduler.
+- Evaluation:
+  - Accuracy and loss both reach the values targeted at this stage of development. It is expected to see an increase once further updates have been implemented.
+  - Training and validation show no indication of overfitting, since their values differ only slighty while a small difference is to be expected while validating.
 
 ## What's next?
 Since this network currently follows the progression of NeuralScratchwork, development will aim for a PyTorch-native implementation of its Status Quo. 
