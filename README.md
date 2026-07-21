@@ -33,10 +33,10 @@ Idea and architecture of the NeuralScratchwork are conceived and heavily inspire
 ![Spiral Data](./assets/spiral_data.png)
 - The network trains for 10k epochs by performing forward passes, backward passes, gradient calculation, and parameter updating.
 
-![Training Results](./assets/training_results.png)
+![Training progression results](./assets/training_progression_results.png)
 - A test dataset is used to evaluate model performance after training.
 
-![Test Results](./assets/test_results.png)
+![Training vs Validation Results](./assets/training_vs_validation_results.png)
 - Evaluation:
   - Accuracy and loss both reach the values targeted at this stage of development. It is expected to see an increase once further updates have been implemented.
   - Training and validation show no indication of overfitting, since their values differ only slighty while a small difference is to be expected while validating.
