@@ -84,7 +84,7 @@ y = torch.tensor(y_raw)
 # Iterations
 for epoch in range(10001):
     # Forward pass
-    model.forward(X, y)
+    model.forward_training(X, y)
 
     # Backward pass and parameter update
     model.optimizer.zero_grad()
