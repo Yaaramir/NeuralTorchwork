@@ -29,7 +29,7 @@ Idea and architecture of the NeuralScratchwork are conceived and heavily inspire
   - 2 hidden layers with ReLU
   - 2 dropout layers with 0.1 dropout rate
   - 1 output layer
-  - CCE with implemented softmax
+  - CCE with implemented Softmax
 
   ![network diagram](./assets/nn_concept.png)
 
@@ -49,8 +49,9 @@ A validation dataset is used to evaluate model performance after training.
 ![Training vs Validation Results](./assets/training_vs_validation_results.png)
 
 - ### Evaluation:
-  - Accuracy and loss both reach the values targeted at this stage of development. It is expected to see an increase once further updates have been implemented.
-  - Training and validation show no indication of overfitting, since their values differ only slighty while a small difference is to be expected while validating.
+  - Results fall a little bit behind those before droput implementation in regards to their absolute scores, while differences between validation an training have narrowed.
+  - This indicates strong generalization and avoidance of overfitting and co-adaptation, clearly an effect of L2 and dropout regularization.
+  - A small degree of overfitting can still be assumed, since validation accuracy should be higher than training accuracy that is reduced naturally by dropout.
 
 ## What's next?
 Since this network currently follows the progression of NeuralScratchwork, development will aim for a PyTorch-native implementation of its Status Quo. 
