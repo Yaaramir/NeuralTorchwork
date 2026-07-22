@@ -27,6 +27,7 @@ Idea and architecture of the NeuralScratchwork are conceived and heavily inspire
 ## Status Quo
 - ### Model:
   - 2 hidden layers with ReLU
+  - 2 dropout layers with 0.1 dropout rate
   - 1 output layer
   - CCE with implemented softmax
 
@@ -53,9 +54,11 @@ A validation dataset is used to evaluate model performance after training.
 
 ## What's next?
 Since this network currently follows the progression of NeuralScratchwork, development will aim for a PyTorch-native implementation of its Status Quo. 
-- The Evaluation expresses the need for hyperparameter management and experimienting to avoid overfitting and training stagnation.
-- More layers and dropout will be considered and tested.
+- The Evaluation expresses the need for more hyperparameter tuning, especially after dropout implementation
+- Data preparation and preprocessing
 - Different model architectures and layer sizes will be experimented with to identify the best-fitting model and detect potential imbalances in the calculations.
+Have a look at this project's [Issues](https://github.com/Yaaramir/NeuralTorchwork/issues) as well to see imminent enhancements and bug fixes.
+
 
 ___
 
