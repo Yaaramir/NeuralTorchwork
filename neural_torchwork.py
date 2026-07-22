@@ -15,8 +15,10 @@ class Model(nn.Module):
         super(Model, self).__init__()
         self.dense1 = nn.Linear(in_features=2, out_features=512)
         self.relu1 = nn.ReLU()
+        self.dropout1 = nn.Dropout(0.1)
         self.dense2 = nn.Linear(in_features=512, out_features=512)
         self.relu2 = nn.ReLU()
+        self.dropout2 = nn.Dropout(0.1)
         self.dense3 = nn.Linear(in_features=512, out_features=3)
         self.softmax = nn.Softmax(dim=1)
         self.cce = nn.CrossEntropyLoss()
@@ -39,15 +41,32 @@ class Model(nn.Module):
     def forward(self, X, y):
 
         # pass data X forward
-        logits = self.dense1(X)
-        logits = self.relu1(logits)
-        logits = self.dense2(logits)
-        logits = self.relu2(logits)
-        logits = self.dense3(logits)
+        x = self.dense1(X)
+        x = self.relu1(x)
+        x = self.dense2(x)
+        x = self.relu2(x)
+        x = self.dense3(x)
 
         # Evaluation: loss and accuracy
-        self.loss = self.cce(logits, y)
-        classes = torch.argmax(logits, dim=1)
+        self.loss = self.cce(x, y)
+        classes = torch.argmax(x, dim=1)
+        true_classes = torch.argmax(y, dim=1) if y.ndim == 2 else y
+        self.acc = (classes == true_classes).float().mean()
+
+    def forward_training(self, X, y):
+
+        # pass data X forward with dropout layers included
+        x = self.dense1(X)
+        x = self.relu1(x)
+        x = self.dropout1(x)
+        x = self.dense2(x)
+        x = self.relu2(x)
+        x = self.dropout2(x)
+        x = self.dense3(x)
+
+        # Evaluation: loss and accuracy
+        self.loss = self.cce(x, y)
+        classes = torch.argmax(x, dim=1)
         true_classes = torch.argmax(y, dim=1) if y.ndim == 2 else y
         self.acc = (classes == true_classes).float().mean()
         
